@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { Question } from "@/types/quiz";
 import { Button } from "@/components/ui/button";
@@ -27,6 +27,34 @@ export default function Home() {
   const { theme, setTheme } = useTheme();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  // --- Tarik memori pas web pertama kali dimuat ---
+  useEffect(() => {
+    const savedQuestions = localStorage.getItem("ngasal_questions");
+    const savedAnswers = localStorage.getItem("ngasal_answers");
+    const savedIndex = localStorage.getItem("ngasal_currentIndex");
+    const savedFinished = localStorage.getItem("ngasal_isFinished");
+
+    if (savedQuestions) setQuestions(JSON.parse(savedQuestions));
+    if (savedAnswers) setAnswers(JSON.parse(savedAnswers));
+    if (savedIndex) setCurrentIndex(parseInt(savedIndex, 10));
+    if (savedFinished) setIsFinished(JSON.parse(savedFinished));
+  }, []);
+
+  // --- Simpan memori otomatis tiap ada aktivitas ---
+  useEffect(() => {
+    if (questions) {
+      localStorage.setItem("ngasal_questions", JSON.stringify(questions));
+      localStorage.setItem("ngasal_answers", JSON.stringify(answers));
+      localStorage.setItem("ngasal_currentIndex", currentIndex.toString());
+      localStorage.setItem("ngasal_isFinished", JSON.stringify(isFinished));
+    } else {
+      // Bersihkan memori kalau tombol "Kembali ke Beranda" ditekan
+      localStorage.removeItem("ngasal_questions");
+      localStorage.removeItem("ngasal_answers");
+      localStorage.removeItem("ngasal_currentIndex");
+      localStorage.removeItem("ngasal_isFinished");
+    }
+  }, [questions, answers, currentIndex, isFinished]);
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
