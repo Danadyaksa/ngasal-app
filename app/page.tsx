@@ -129,11 +129,11 @@ export default function Home() {
     return (totalAnswered / questions.length) * 100;
   }, [answers, questions]);
 
-  const ThemeToggle = () => (
+  const ThemeToggle = ({ className = "absolute top-4 right-4" }: { className?: string }) => (
     <Button 
       variant="outline" 
       size="icon" 
-      className="absolute top-4 right-4 rounded-full z-50 bg-background/80 backdrop-blur-sm"
+      className={`${className} rounded-full z-50 bg-background/80 backdrop-blur-sm`}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "dark" ? (
@@ -210,27 +210,32 @@ export default function Home() {
 
   return (
     <main className="min-h-screen flex flex-col items-center py-6 px-4 md:py-12 md:px-8 bg-background relative">
-      <ThemeToggle />
+      {/* <ThemeToggle /> YANG AWALNYA DI SINI (ABSOLUTE) DIHAPUS */}
       
       {/* HEADER & PROGRESS BAR */}
-      <div className="w-full max-w-3xl mb-4 space-y-3 mt-12 md:mt-0">
+      {/* Hapus mt-12 karena sekarang sudah tidak nabrak tombol di kanan atas */}
+      <div className="w-full max-w-3xl mb-4 space-y-3">
         <div className="flex justify-between items-center text-muted-foreground">
           <span className="font-medium text-sm md:text-base">Soal {currentIndex + 1} dari {questions.length}</span>
+          
+          {/* LETAKKAN DI SINI: className="" akan mematikan efek posisi "absolute" */}
+          <ThemeToggle className="" />
+
           <span className="font-medium text-sm md:text-base">Skor Sementara: {score}</span>
         </div>
         <Progress value={progressPercentage} className="h-2 w-full" />
       </div>
 
-      <Card className="w-full max-w-3xl shadow-lg mb-6">
+      <Card className="w-full max-w-3xl shadow-lg mb-4">
         <CardHeader>
           <CardTitle className="text-lg md:text-xl leading-relaxed">{currentQ.question}</CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-col gap-3">
+        <CardContent className="flex flex-col gap-2">
           {currentQ.options.map((option, index) => {
             const isSelected = answers[currentIndex] === option;
             const isCorrect = option === currentQ.correctAnswer;
             
-            let customClass = "justify-start text-left text-sm md:text-base p-4 min-h-[3.5rem] h-auto whitespace-normal transition-colors";
+            let customClass = "justify-start text-left text-sm md:text-base p-4 min-h-[1.5rem] h-auto whitespace-normal transition-colors";
             
             if (hasAnsweredCurrent) {
               if (isCorrect) {
