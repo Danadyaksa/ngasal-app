@@ -15,7 +15,6 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
 export default function Home() {
@@ -213,7 +212,7 @@ export default function Home() {
     <main className="min-h-screen flex flex-col items-center py-6 px-4 md:py-12 md:px-8 bg-background relative">
       <ThemeToggle />
       
-      {/* HEADER & PROGRESS BAR (Ditambah mt-12 agar tidak nabrak tombol Dark Mode di HP) */}
+      {/* HEADER & PROGRESS BAR */}
       <div className="w-full max-w-3xl mb-4 space-y-3 mt-12 md:mt-0">
         <div className="flex justify-between items-center text-muted-foreground">
           <span className="font-medium text-sm md:text-base">Soal {currentIndex + 1} dari {questions.length}</span>
@@ -222,7 +221,7 @@ export default function Home() {
         <Progress value={progressPercentage} className="h-2 w-full" />
       </div>
 
-      <Card className="w-full max-w-3xl shadow-lg mb-8">
+      <Card className="w-full max-w-3xl shadow-lg mb-6">
         <CardHeader>
           <CardTitle className="text-lg md:text-xl leading-relaxed">{currentQ.question}</CardTitle>
         </CardHeader>
@@ -260,10 +259,11 @@ export default function Home() {
         </CardFooter>
       </Card>
 
-      {/* NAVIGASI NOMOR BAWAH */}
-      <div className="w-full max-w-3xl">
+      {/* --- FITUR BARU: NAVIGASI NOMOR DENGAN SCROLL SENDIRI --- */}
+      <div className="w-full max-w-3xl bg-card border rounded-xl shadow-sm p-4">
         <h3 className="text-sm font-semibold text-muted-foreground mb-3 text-center md:text-left">Lompat ke Soal:</h3>
-        <div className="flex flex-wrap justify-center md:justify-start gap-2">
+        {/* max-h-48 bikin tingginya dibatasi, overflow-y-auto bikin scrollbar muncul otomatis kalau isinya berlebih */}
+        <div className="flex flex-wrap justify-center md:justify-start gap-2 max-h-48 overflow-y-auto pr-2 pb-2">
           {questions.map((_, idx) => {
             const isCurrent = currentIndex === idx;
             const isAnswered = answers[idx] !== undefined;
@@ -271,7 +271,7 @@ export default function Home() {
               <Button
                 key={idx}
                 variant={isCurrent ? "default" : isAnswered ? "secondary" : "outline"}
-                className={`h-10 w-10 p-0 rounded-md ${isCurrent ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : ''}`}
+                className={`h-10 w-10 p-0 rounded-md shrink-0 ${isCurrent ? 'ring-2 ring-primary ring-offset-2 ring-offset-background' : ''}`}
                 onClick={() => setCurrentIndex(idx)}
               >
                 {idx + 1}
