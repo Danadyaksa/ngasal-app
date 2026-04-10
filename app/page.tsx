@@ -25,10 +25,7 @@ export default function Home() {
   const [isFinished, setIsFinished] = useState(false);
   const [isRandomMode, setIsRandomMode] = useState(false);
   
-  // Theme state
   const { theme, setTheme } = useTheme();
-
-  // Dialog state untuk konfirmasi submit
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -104,7 +101,6 @@ export default function Home() {
     if (fileInput) fileInput.value = '';
   };
 
-  // Logika Submit
   const handleFinalSubmit = () => {
     setIsDialogOpen(false);
     setIsFinished(true);
@@ -113,9 +109,9 @@ export default function Home() {
   const attemptSubmit = () => {
     const totalAnswered = Object.keys(answers).length;
     if (questions && totalAnswered < questions.length) {
-      setIsDialogOpen(true); // Buka modal peringatan jika ada yang kosong
+      setIsDialogOpen(true); 
     } else {
-      handleFinalSubmit(); // Langsung kumpulkan jika semua terisi
+      handleFinalSubmit(); 
     }
   };
 
@@ -128,26 +124,22 @@ export default function Home() {
     return total;
   }, [answers, questions]);
 
-  // Kalkulasi Progress Bar
   const progressPercentage = useMemo(() => {
     if (!questions) return 0;
     const totalAnswered = Object.keys(answers).length;
     return (totalAnswered / questions.length) * 100;
   }, [answers, questions]);
 
-  // Tombol Toggle Tema (Bulan/Matahari)
   const ThemeToggle = () => (
     <Button 
       variant="outline" 
       size="icon" 
-      className="absolute top-4 right-4 rounded-full"
+      className="absolute top-4 right-4 rounded-full z-50 bg-background/80 backdrop-blur-sm"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "dark" ? (
-        // Ikon Matahari (Light Mode)
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
       ) : (
-        // Ikon Bulan (Dark Mode)
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
       )}
     </Button>
@@ -221,8 +213,8 @@ export default function Home() {
     <main className="min-h-screen flex flex-col items-center py-6 px-4 md:py-12 md:px-8 bg-background relative">
       <ThemeToggle />
       
-      {/* HEADER & PROGRESS BAR */}
-      <div className="w-full max-w-3xl mb-4 space-y-3">
+      {/* HEADER & PROGRESS BAR (Ditambah mt-12 agar tidak nabrak tombol Dark Mode di HP) */}
+      <div className="w-full max-w-3xl mb-4 space-y-3 mt-12 md:mt-0">
         <div className="flex justify-between items-center text-muted-foreground">
           <span className="font-medium text-sm md:text-base">Soal {currentIndex + 1} dari {questions.length}</span>
           <span className="font-medium text-sm md:text-base">Skor Sementara: {score}</span>
