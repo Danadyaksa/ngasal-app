@@ -292,11 +292,25 @@ export default function Home() {
         </CardFooter>
       </Card>
 
-      {/* --- FITUR BARU: NAVIGASI NOMOR DENGAN SCROLL SENDIRI --- */}
-      <div className="w-full max-w-3xl bg-card border rounded-xl shadow-sm p-4">
-        <h3 className="text-sm font-semibold text-muted-foreground mb-3 text-center md:text-left">Lompat ke Soal:</h3>
-        {/* max-h-48 bikin tingginya dibatasi, overflow-y-auto bikin scrollbar muncul otomatis kalau isinya berlebih */}
-        <div className="flex flex-wrap justify-center md:justify-start gap-2 max-h-48 overflow-y-auto pr-2 pb-2">
+      {/* --- FITUR BARU: NAVIGASI NOMOR + TOMBOL KUMPULKAN LANGSUNG --- */}
+      <div className="w-full max-w-3xl bg-card border rounded-xl shadow-sm p-3 md:p-4">
+        
+        {/* EDIT DI SINI: Flexbox untuk menyusun judul dan tombol berjejer */}
+        <div className="flex justify-between items-center mb-2 md:mb-3">
+          <h3 className="text-xs md:text-sm font-semibold text-muted-foreground">Lompat ke Soal:</h3>
+          
+          {/* Tombol Kumpulkan Langsung (Kecil & Rapi) */}
+          <Button 
+            onClick={attemptSubmit} 
+            variant="outline" 
+            size="sm" 
+            className="h-7 px-3 text-[11px] md:h-8 md:px-4 md:text-xs font-semibold border-primary/20 hover:bg-primary/5 text-primary"
+          >
+            Kumpulkan Langsung
+          </Button>
+        </div>
+        
+        <div className="grid grid-cols-6 sm:grid-cols-8 md:grid-cols-12 gap-2 max-h-40 md:max-h-48 overflow-y-auto pr-2 pb-2">
           {questions.map((_, idx) => {
             const isCurrent = currentIndex === idx;
             const isAnswered = answers[idx] !== undefined;
