@@ -11,7 +11,7 @@ Ngasal (Ngerjain Soal) App adalah platform kuis interaktif berbasis web yang mem
 
 ## Fitur Unggulan
 
--**Custom JSON Upload:** Tidak perlu *database*, cukup *drag & drop* file JSON, kuis langsung siap dikerjakan.
+- **Custom JSON Upload:** Tidak perlu *database*, cukup *drag & drop* file JSON, kuis langsung siap dikerjakan.
 - **Auto-Save Progress:** Jawaban dan posisi soal otomatis tersimpan di *browser*. Aman meski halaman tidak sengaja di-*refresh*!
 - **Dark / Light Mode:** Dilengkapi *toggle* mode gelap untuk kenyamanan mata saat mengerjakan soal dalam waktu lama.
 - **Mode Urut & Acak:** Opsi pengacakan urutan soal dengan algoritma *Fisher-Yates* sebelum ujian dimulai.
