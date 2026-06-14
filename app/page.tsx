@@ -17,23 +17,79 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
-const cleanQuestionText = (text: string): string => {
-  if (!text) return "";
-  const patterns = [
-    "📝 Soal Isian Singkat",
-    "✅ Jawaban:",
-    "📝 Soal Pilihan Ganda",
-    "📝 Soal Isian",
-    "📝 Soal Essay"
-  ];
-  let cleaned = text;
-  for (const pattern of patterns) {
-    const idx = cleaned.indexOf(pattern);
-    if (idx !== -1) {
-      cleaned = cleaned.substring(0, idx);
+const parseAndCleanQuestion = (q: Question): Question => {
+  let questionText = q.question || "";
+  let correctAnswer = q.correctAnswer || "";
+  let acceptableAnswers: string[] = [];
+
+  // Match metadata pattern using case-insensitive and flexible regex
+  const metadataRegex = /📝\s*Soal\s*(Isian\s*Singkat|Pilihan\s*Ganda|Essay|Isian)[\s\S]*/i;
+  
+  const match = questionText.match(metadataRegex);
+  if (match) {
+    const metadataBlock = match[0];
+    
+    // Slice off the metadata from the question text
+    questionText = questionText.replace(metadataBlock, "").trim();
+
+    // If correctAnswer is empty or null, try to extract it from the metadata block
+    if (!correctAnswer) {
+      const answerRegex = /✅\s*Jawaban:\s*([^\(\n]+)/i;
+      const answerMatch = metadataBlock.match(answerRegex);
+      if (answerMatch) {
+        correctAnswer = answerMatch[1].trim();
+        
+        // Remove trailing Grade metadata if captured
+        const gradeIdx = correctAnswer.indexOf("(Grade:");
+        if (gradeIdx !== -1) {
+          correctAnswer = correctAnswer.substring(0, gradeIdx).trim();
+        }
+        
+        // Remove trailing Alternatives metadata if captured
+        const altIdx = correctAnswer.toLowerCase().indexOf("alternatif:");
+        if (altIdx !== -1) {
+          correctAnswer = correctAnswer.substring(0, altIdx).trim();
+        }
+      }
+    }
+    
+    // Extract alternative answers
+    const altRegex = /Alternatif:\s*([^\n]+)/i;
+    const altMatch = metadataBlock.match(altRegex);
+    if (altMatch) {
+      const altText = altMatch[1].trim();
+      const alts = altText.split(/[,;]/).map(a => a.trim()).filter(Boolean);
+      acceptableAnswers.push(...alts);
     }
   }
-  return cleaned.trim();
+
+  // Double-check clean any leftover emojis or answer keys
+  const cleanPatterns = [
+    /📝\s*Soal\s*(Isian\s*Singkat|Pilihan\s*Ganda|Essay|Isian)/i,
+    /✅\s*Jawaban:/i,
+    /\(Grade:\s*\d+%\)/i
+  ];
+
+  for (const pat of cleanPatterns) {
+    const m = questionText.match(pat);
+    if (m && m.index !== undefined) {
+      questionText = questionText.substring(0, m.index).trim();
+    }
+  }
+
+  // Ensure correctAnswer is in acceptableAnswers list
+  if (correctAnswer) {
+    acceptableAnswers.push(correctAnswer);
+  }
+
+  const uniqueAcceptable = Array.from(new Set(acceptableAnswers.map(a => a.trim()))).filter(Boolean);
+
+  return {
+    ...q,
+    question: questionText.trim(),
+    correctAnswer: correctAnswer || "",
+    acceptableAnswers: uniqueAcceptable.length > 0 ? uniqueAcceptable : undefined
+  };
 };
 
 export default function Home() {
@@ -55,7 +111,10 @@ export default function Home() {
     const savedIndex = localStorage.getItem("ngasal_currentIndex");
     const savedFinished = localStorage.getItem("ngasal_isFinished");
 
-    if (savedQuestions) setQuestions(JSON.parse(savedQuestions));
+    if (savedQuestions) {
+      const parsed = JSON.parse(savedQuestions) as Question[];
+      setQuestions(parsed.map(parseAndCleanQuestion));
+    }
     if (savedAnswers) setAnswers(JSON.parse(savedAnswers));
     if (savedIndex) setCurrentIndex(parseInt(savedIndex, 10));
     if (savedFinished) setIsFinished(JSON.parse(savedFinished));
@@ -92,7 +151,7 @@ export default function Home() {
         const parsedData: Question[] = JSON.parse(content);
         
         if (parsedData.length > 0 && parsedData[0].question) {
-          let finalQuestions = [...parsedData];
+          let finalQuestions = parsedData.map(parseAndCleanQuestion);
           if (isRandomMode) {
             finalQuestions.sort(() => Math.random() - 0.5);
           }
@@ -158,7 +217,7 @@ export default function Home() {
 
   const handleRetake = () => {
     if (questions) {
-      let reshuffled = [...questions];
+      let reshuffled = questions.map(parseAndCleanQuestion);
       if (isRandomMode) {
         reshuffled.sort(() => Math.random() - 0.5);
       }
@@ -208,8 +267,15 @@ export default function Home() {
       
       const isEssay = !q.options || q.options.length === 0;
       if (isEssay) {
-        if (userAnswer.trim().toLowerCase() === q.correctAnswer.trim().toLowerCase()) {
-          total++;
+        if (q.acceptableAnswers && q.acceptableAnswers.length > 0) {
+          const matched = q.acceptableAnswers.some(
+            (ans) => ans.trim().toLowerCase() === userAnswer.trim().toLowerCase()
+          );
+          if (matched) total++;
+        } else {
+          if (userAnswer.trim().toLowerCase() === q.correctAnswer.trim().toLowerCase()) {
+            total++;
+          }
         }
       } else {
         if (userAnswer === q.correctAnswer) {
@@ -333,7 +399,7 @@ export default function Home() {
       <Card className="w-full max-w-3xl shadow-lg mb-4">
         <CardHeader>
           <CardTitle className="text-lg md:text-xl leading-relaxed">
-            {cleanQuestionText(currentQ.question)}
+            {currentQ.question}
           </CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
@@ -363,24 +429,32 @@ export default function Home() {
                 </Button>
               ) : (
                 <div className="flex flex-col gap-3">
-                  {essayInput.trim().toLowerCase() === currentQ.correctAnswer.trim().toLowerCase() ? (
-                    <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex flex-col gap-1 text-sm md:text-base">
-                      <span className="font-bold flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
-                        Jawaban Kamu Benar!
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="p-4 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive flex flex-col gap-2 text-sm md:text-base">
-                      <span className="font-bold flex items-center gap-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                        Jawaban Kamu Kurang Tepat.
-                      </span>
-                      <p className="text-muted-foreground text-xs md:text-sm">
-                        Jawaban yang benar: <strong className="text-foreground font-semibold">{currentQ.correctAnswer}</strong>
-                      </p>
-                    </div>
-                  )}
+                  {(() => {
+                    const isCorrect = currentQ.acceptableAnswers && currentQ.acceptableAnswers.length > 0
+                      ? currentQ.acceptableAnswers.some(ans => ans.trim().toLowerCase() === essayInput.trim().toLowerCase())
+                      : essayInput.trim().toLowerCase() === currentQ.correctAnswer.trim().toLowerCase();
+
+                    return isCorrect ? (
+                      <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex flex-col gap-1 text-sm md:text-base">
+                        <span className="font-bold flex items-center gap-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                          Jawaban Kamu Benar!
+                        </span>
+                      </div>
+                    ) : (
+                      <div className="p-4 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive flex flex-col gap-2 text-sm md:text-base">
+                        <span className="font-bold flex items-center gap-2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                          Jawaban Kamu Kurang Tepat.
+                        </span>
+                        <p className="text-muted-foreground text-xs md:text-sm">
+                          Jawaban yang benar: <strong className="text-foreground font-semibold">
+                            {currentQ.acceptableAnswers ? currentQ.acceptableAnswers.join(" atau ") : currentQ.correctAnswer}
+                          </strong>
+                        </p>
+                      </div>
+                    );
+                  })()}
                   <Button 
                     variant="outline" 
                     onClick={handleEssayReset} 
