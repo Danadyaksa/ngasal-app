@@ -34,7 +34,7 @@ const parseAndCleanQuestion = (q: Question): Question => {
 
     // If correctAnswer is empty or null, try to extract it from the metadata block
     if (!correctAnswer) {
-      const answerRegex = /✅\s*Jawaban:\s*([^\(\n]+)/i;
+      const answerRegex = /✅\s*Jawaban:\s*(.*?)(?:\(Grade:|\n|Alternatif:|$)/i;
       const answerMatch = metadataBlock.match(answerRegex);
       if (answerMatch) {
         correctAnswer = answerMatch[1].trim();
