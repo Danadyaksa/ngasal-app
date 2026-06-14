@@ -1,0 +1,1127 @@
+[
+  {
+    "id": 1,
+    "question": "Android adalah sistem operasi berbasis linux yang",
+    "options": [
+      "XML dan java",
+      "java dan C++",
+      "java dan PHP",
+      "C++ dan XML",
+      "Python dan PHP"
+    ],
+    "correctAnswer": "XML dan java"
+  },
+  {
+    "id": 2,
+    "question": "Apa hasil dari kode ini? var a = null; print(a ?? 'kosong');",
+    "options": [
+      "Error",
+      "null",
+      "kosong",
+      "0"
+    ],
+    "correctAnswer": "kosong"
+  },
+  {
+    "id": 3,
+    "question": "Apa hasil dari print('5' + '5'); ?",
+    "options": [
+      "10",
+      "55",
+      "Error",
+      "5"
+    ],
+    "correctAnswer": "55"
+  },
+  {
+    "id": 4,
+    "question": "Apa hasil dari print([1, 2, 3][1]); ?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "Error"
+    ],
+    "correctAnswer": "2"
+  },
+  {
+    "id": 5,
+    "question": "Apa itu cascade notation dalam Dart (..)?",
+    "options": [
+      "Operator untuk menggabungkan list",
+      "Menjalankan beberapa operasi pada objek yang sama",
+      "Membuat objek dari class",
+      "Menampilkan data"
+    ],
+    "correctAnswer": "Menjalankan beberapa operasi pada objek yang sama"
+  },
+  {
+    "id": 6,
+    "question": "Apa perbedaan antara ﬁnal dan const?",
+    "options": [
+      "const tidak bisa digunakan untuk objek",
+      "ﬁnal bisa diubah setelah runtime",
+      "const harus diinisialisasi saat kompilasi",
+      "Tidak ada perbedaan"
+    ],
+    "correctAnswer": "const harus diinisialisasi saat kompilasi"
+  },
+  {
+    "id": 7,
+    "question": "Apa yang terjadi jika kita menjalankan int x =",
+    "options": [
+      "Nilai x adalah 0",
+      "Nilai x adalah null",
+      "Terjadi error",
+      "Nilai x adalah 'abc'"
+    ],
+    "correctAnswer": "Terjadi error"
+  },
+  {
+    "id": 8,
+    "question": "Bagaimana cara menangani error secara spesiﬁk?",
+    "options": [
+      "try { }",
+      "try-catch(e) { }",
+      "throw {}",
+      "switch {}"
+    ],
+    "correctAnswer": "try-catch(e) { }"
+  },
+  {
+    "id": 9,
+    "question": "Bagaimana cara mendeklarasikan fungsi anonim (lambda)",
+    "options": [
+      "() => expression",
+      "function => expression",
+      "lambda()",
+      "anonymous()"
+    ],
+    "correctAnswer": "() => expression"
+  },
+  {
+    "id": 10,
+    "question": "Constructor default dalam class adalah:",
+    "options": [
+      "Sama seperti method",
+      "Tanpa parameter",
+      "Tidak ada di Dart",
+      "Harus static"
+    ],
+    "correctAnswer": "Tanpa parameter"
+  },
+  {
+    "id": 11,
+    "question": "Dalam Dart, class bisa memiliki:",
+    "options": [
+      "Satu constructor saja",
+      "Lebih dari satu constructor dengan nama berbeda",
+      "Tidak bisa memiliki constructor",
+      "Constructor harus public"
+    ],
+    "correctAnswer": "Lebih dari satu constructor dengan nama berbeda"
+  },
+  {
+    "id": 12,
+    "question": "Dart mendukung paradigma:",
+    "options": [
+      "Prosedural",
+      "OOP",
+      "Fungsional",
+      "Semua benar"
+    ],
+    "correctAnswer": "Semua benar"
+  },
+  {
+    "id": 13,
+    "question": "Fungsi List dalam Dart digunakan untuk:",
+    "options": [
+      "Menyimpan karakter",
+      "Menyimpan pasangan key-value",
+      "Menyimpan daftar item",
+      "Menyimpan bilangan pecahan"
+    ],
+    "correctAnswer": "Menyimpan daftar item"
+  },
+  {
+    "id": 14,
+    "question": "Kata kunci async dan await digunakan dalam:",
+    "options": [
+      "Looping",
+      "Pemrograman sinkron",
+      "Pemrograman asinkron",
+      "Error handling"
+    ],
+    "correctAnswer": "Pemrograman asinkron"
+  },
+  {
+    "id": 15,
+    "question": "Library standar untuk operasi dasar Dart diimpor dengan:",
+    "options": [
+      "import 'dart:core';",
+      "import 'dart:main';",
+      "import 'dart:base';",
+      "Tidak perlu diimpor"
+    ],
+    "correctAnswer": "import 'dart:core';"
+  },
+  {
+    "id": 16,
+    "question": "Map dalam Dart digunakan untuk menyimpan:",
+    "options": [
+      "Array",
+      "List",
+      "Key-value pair",
+      "Hanya String"
+    ],
+    "correctAnswer": "Key-value pair"
+  },
+  {
+    "id": 17,
+    "question": "Method static bisa dipanggil tanpa:",
+    "options": [
+      "Parameter",
+      "Objek",
+      "Import",
+      "Return"
+    ],
+    "correctAnswer": "Objek"
+  },
+  {
+    "id": 18,
+    "question": "Nilai default dari variabel yang belum diinisialisasi dalam",
+    "options": [
+      "0",
+      "null",
+      "false",
+      "undeﬁned"
+    ],
+    "correctAnswer": "null"
+  },
+  {
+    "id": 19,
+    "question": "Perbedaan antara List dan Set dalam Dart adalah:",
+    "options": [
+      "List tidak bisa kosong",
+      "Set tidak bisa memiliki elemen duplikat",
+      "Set lebih besar dari List",
+      "List hanya menyimpan string"
+    ],
+    "correctAnswer": "Set tidak bisa memiliki elemen duplikat"
+  },
+  {
+    "id": 20,
+    "question": "Perintah await hanya bisa digunakan dalam fungsi yang",
+    "options": [
+      "future",
+      "async",
+      "await",
+      "futureOr"
+    ],
+    "correctAnswer": "async"
+  },
+  {
+    "id": 21,
+    "question": "Perintah untuk mengambil panjang string:",
+    "options": [
+      "string.size",
+      "string.length",
+      "length(string)",
+      "sizeOf(string)"
+    ],
+    "correctAnswer": "string.length"
+  },
+  {
+    "id": 22,
+    "question": "Untuk memeriksa tipe variabel digunakan:",
+    "options": [
+      "typeof",
+      "checkType",
+      "is",
+      "cast"
+    ],
+    "correctAnswer": "is"
+  },
+  {
+    "id": 23,
+    "question": "Apa hasil dari print('${2 + 2} Dart'); ?",
+    "options": [],
+    "correctAnswer": "4 Dart"
+  },
+  {
+    "id": 24,
+    "question": "Dalam Dart, untuk keluar dari loop digunakan Kata kunci:",
+    "options": [],
+    "correctAnswer": "break"
+  },
+  {
+    "id": 25,
+    "question": "Kata kunci untuk membuat fungsi di Dart adalah:",
+    "options": [],
+    "correctAnswer": "void"
+  },
+  {
+    "id": 26,
+    "question": "Menambahkan elemen ke List atau Set dalam bahasa dart",
+    "options": [],
+    "correctAnswer": "add()"
+  },
+  {
+    "id": 27,
+    "question": "Menentukan parameter wajib dalam fungsi atau",
+    "options": [],
+    "correctAnswer": "required"
+  },
+  {
+    "id": 28,
+    "question": "Objek class saat ini dalam bahasa dart merujuk pada",
+    "options": [],
+    "correctAnswer": "this"
+  },
+  {
+    "id": 29,
+    "question": "Perintah untuk mencetak teks ke konsol dalam Dart",
+    "options": [],
+    "correctAnswer": "console.log()"
+  },
+  {
+    "id": 30,
+    "question": "Tipe dinamis yang ditentukan saat runtime dalam bahasa",
+    "options": [],
+    "correctAnswer": "var"
+  },
+  {
+    "id": 31,
+    "question": "Variabel yang tidak bisa diubah setelah diinisialisasi",
+    "options": [],
+    "correctAnswer": "final"
+  },
+  {
+    "id": 32,
+    "question": "Apabila pencocokan kode SID tidak cocok dengan database",
+    "options": [
+      "Hang",
+      "UMTS",
+      "Roaming",
+      "Wireband",
+      "full duplex"
+    ],
+    "correctAnswer": "Roaming"
+  },
+  {
+    "id": 33,
+    "question": "Aplication framework di android yang mengelola daur",
+    "options": [
+      "Content provider",
+      "Resource Manager",
+      "View",
+      "Activity Manager",
+      "Content provider"
+    ],
+    "correctAnswer": "Activity Manager"
+  },
+  {
+    "id": 34,
+    "question": "Application framework di android yang menyediakan",
+    "options": [
+      "Content provider",
+      "View",
+      "Resource Manager",
+      "Activity Manager",
+      "Content provider"
+    ],
+    "correctAnswer": "Resource Manager"
+  },
+  {
+    "id": 35,
+    "question": "Area Splitting digunakan untuk membagi suatu area",
+    "options": [
+      "suatu area yg tingkat interferensinya tinggi",
+      "area yang terlalu padat agar layanan dapat tersedia",
+      "area perkotaan yang banyak gedung gedung bertingkat",
+      "area cell yang terdiri dari frekuensi dengan daya pancar rendah",
+      "untuk area yang jauh dari base station controler"
+    ],
+    "correctAnswer": "area yang terlalu padat agar layanan dapat tersedia"
+  },
+  {
+    "id": 36,
+    "question": "Beberapa aplikasi yang memenfaatkan LBS adalah Google",
+    "options": [
+      "Lebih banyak didukung operating system",
+      "Tersedia versi Aplikasi Website",
+      "Level presisi lokasi yang ditemukan lebih baik",
+      "Temporary location sharing dapat dibatasi berdasarkan waktu dan tanggal ←",
+      "Mendukung check into nearby place"
+    ],
+    "correctAnswer": "Temporary location sharing dapat dibatasi berdasarkan waktu dan tanggal ←"
+  },
+  {
+    "id": 37,
+    "question": "Berikut ini adalah beberapa komponen dari LBS, kecuali...",
+    "options": [
+      "GPS",
+      "Jaringan komunikasi",
+      "Piranti mobile",
+      "Bluetooth Interface",
+      "Aplication Content Provider"
+    ],
+    "correctAnswer": "Bluetooth Interface"
+  },
+  {
+    "id": 38,
+    "question": "Berikut ini adalah cara yg paling ideal untuk menentukan",
+    "options": [
+      "Carrier merepresentasikan geo-code kepada content provider kemudian ditranslasikan",
+      "Base Station Transmiter Mencatat Lokasi Carrier kemudian mentranslasikan nya ke",
+      "Pengguna mengaktifkan GPS untuk menemukan lokasi yg kemudian ditranslasikan",
+      "Content Provider memberikan informasi geo-code dan mengirimkan ke map ←",
+      "Pengguna melakukan request geo-code pada content provider kemudian"
+    ],
+    "correctAnswer": "Content Provider memberikan informasi geo-code dan mengirimkan ke map ←"
+  },
+  {
+    "id": 39,
+    "question": "Berikut ini adalah teknik untuk menentukan location-id...",
+    "options": [
+      "ID tracking system",
+      "Handset centric",
+      "Network Based",
+      "Satellite based",
+      "Network centric"
+    ],
+    "correctAnswer": "Network centric"
+  },
+  {
+    "id": 40,
+    "question": "Berikut ini Kekurangan dari Mobile Technology, Kecuali....",
+    "options": [
+      "Harus memenuhi LOS ( Line Of Sight )",
+      "Security",
+      "Izin Penggunaan Frequensi",
+      "Tingkat Interferensi yang tinngi",
+      "Kompatibilitas Terhadap Perangkat Sejenis"
+    ],
+    "correctAnswer": "Kompatibilitas Terhadap Perangkat Sejenis"
+  },
+  {
+    "id": 41,
+    "question": "Berikut ini perangkat yang termasuk dalam mobile",
+    "options": [
+      "BSC Machine",
+      "PDA with bluetooth / IRDA",
+      "Laptop With Wireless Lan",
+      "Mobile Phone",
+      "Wearable Computer"
+    ],
+    "correctAnswer": "BSC Machine"
+  },
+  {
+    "id": 42,
+    "question": "Bluetooth bekerja pada pita pita frekuensi...",
+    "options": [
+      "1,5 Ghz",
+      "3,2 Ghz",
+      "7,2 Ghz",
+      "5,8 Ghz",
+      "2,4 Ghz"
+    ],
+    "correctAnswer": "2,4 Ghz"
+  },
+  {
+    "id": 43,
+    "question": "Dalam Android, tahap penerapan recycler view terdapat",
+    "options": [
+      "XML",
+      "JSON",
+      "Java",
+      "Javascript",
+      "Kotlin"
+    ],
+    "correctAnswer": "XML"
+  },
+  {
+    "id": 44,
+    "question": "Dalam Arsitektur Android OS, di bawah ini merupakan",
+    "options": [
+      "Location Manager",
+      "Windows Manager",
+      "Media Framework",
+      "Activity Manager",
+      "Content Provider"
+    ],
+    "correctAnswer": "Media Framework"
+  },
+  {
+    "id": 45,
+    "question": "Dalam Arsitektur Android OS, manakah di bawah ini yang",
+    "options": [
+      "SGL",
+      "Dalvik Virtual Machine",
+      "Media Framework",
+      "Power Management",
+      "Core Library"
+    ],
+    "correctAnswer": "Power Management"
+  },
+  {
+    "id": 46,
+    "question": "Dalam arsitektur GSM yang digunakan untuk melakukan",
+    "options": [
+      "HLR",
+      "VLR",
+      "AUC",
+      "MSC",
+      "EIR"
+    ],
+    "correctAnswer": "MSC"
+  },
+  {
+    "id": 47,
+    "question": "Dalam Struktur Project Android, manakah berikut ini yang",
+    "options": [
+      "assets/",
+      "src/",
+      "build/",
+      "res/",
+      "build.gradle/"
+    ],
+    "correctAnswer": "build.gradle/"
+  },
+  {
+    "id": 48,
+    "question": "Dari aspek teknologi komunikasi Mobile phone dewasa ini",
+    "options": [
+      "Packet Switching",
+      "Transmisi Pita Lebar Radio",
+      "Packet Voice Switching",
+      "Transmisi radio dan PSTN",
+      "Telephone circuit Switching"
+    ],
+    "correctAnswer": "Transmisi radio dan PSTN"
+  },
+  {
+    "id": 49,
+    "question": "Database yang digunakan untuk manajemen dan",
+    "options": [
+      "HLR",
+      "VLR",
+      "AUC",
+      "MSC",
+      "EIR"
+    ],
+    "correctAnswer": "HLR"
+  },
+  {
+    "id": 50,
+    "question": "Dibawah ini adalah pernyataan yang tepat mengenai vpn",
+    "options": [
+      "VPN menggunakan teknologi tunneling dan anonimous IP addressing",
+      "IP public digunakan dalam VPN untuk tetap dapat terkoneksi di jaringan lokal",
+      "VPN dapat memberikan keamanan dalam berinternet",
+      "Dengan VPN user dapat tetap terkoneksi dengan server meskipun tidak berada pada",
+      "VPN dapat meningkatkan bandwidth sehingga koneksi jaringan lebih stabil ←"
+    ],
+    "correctAnswer": "VPN dapat meningkatkan bandwidth sehingga koneksi jaringan lebih stabil ←"
+  },
+  {
+    "id": 51,
+    "question": "Dibawah ini adalah sejumlah keuntungan menggunakan",
+    "options": [
+      "Menyediakan Kompatibilitas",
+      "Memberikan Portabilitas yang baik",
+      "Meningkatkan keamanan data pada aplikasi",
+      "Mudah dimengerti",
+      "Eﬁsiensi dalam pengembangan"
+    ],
+    "correctAnswer": "Meningkatkan keamanan data pada aplikasi"
+  },
+  {
+    "id": 52,
+    "question": "Dibawah ini merupakan keunggulan dari mobile",
+    "options": [
+      "Dapat dikustomisasi sesuai kebutuhan personal",
+      "Hemat daya dan tahan terhadap interferensi sinyal",
+      "Akses informasi mudah, kapanpun dan dimanapun",
+      "Mobilitas tinggi dan mereduksi kerumitan kabel",
+      "Cocok untuk daerah yang belum terdapat infrastruktur selama masih Line of sight"
+    ],
+    "correctAnswer": "Hemat daya dan tahan terhadap interferensi sinyal"
+  },
+  {
+    "id": 53,
+    "question": "Dibawah ini merupakan keunggulan TDMA dibandingkan",
+    "options": [
+      "Lebih besar dari sisi worldmarket share",
+      "Tahan terhadap interferensi gelombang ampliﬁer",
+      "Hemat konsumsi daya",
+      "Jangkauan sinyal 850/900 Mhz pada kondisi indoor lebih baik",
+      "Gelombang radio yang lebih tahan terhadap halangan"
+    ],
+    "correctAnswer": "Tahan terhadap interferensi gelombang ampliﬁer"
+  },
+  {
+    "id": 54,
+    "question": "Dibawah ini merupakan kondisi yang dapat melemahkan",
+    "options": [
+      "Cuaca dengan hujan lebat , badai dan petir",
+      "Jarak yang terlampau jauh and medan yang bergunung-gunung",
+      "Frekuensi dari Handy Talky dan pemancar radio FM yang bertebaran ←",
+      "Serangan keamanan pada jaringan mobile",
+      "Standar frekuensi komunikasi yang belum tersedia"
+    ],
+    "correctAnswer": "Frekuensi dari Handy Talky dan pemancar radio FM yang bertebaran ←"
+  },
+  {
+    "id": 55,
+    "question": "Dibawah ini merupakan pernyataan yang tepat antara",
+    "options": [
+      "Webservice pasti menggunakan API tetapi tidak semua API digunakan sebagai",
+      "Webservice menjembatani interaksi antar aplikasi atau perangkat melalui jaringan,",
+      "API tidak selalu membutuhkan jaringan untuk komunikasinya sedangkan webservice",
+      "Webservice memiliki 3 entitas arsitekturny yaitu: service provider, service",
+      "Style komunikasi API hampir tidak terbatas sedangkan webservice hanya"
+    ],
+    "correctAnswer": "Webservice memiliki 3 entitas arsitekturny yaitu: service provider, service"
+  },
+  {
+    "id": 56,
+    "question": "Dibawah ini pengkodean karakter dengan lebar tertentu",
+    "options": [
+      "utf-15",
+      "utf-10",
+      "utf-12",
+      "utf-8",
+      "utf-9"
+    ],
+    "correctAnswer": "utf-8"
+  },
+  {
+    "id": 57,
+    "question": "Dibawah ini termasuk dalam mekanisme pengujian statis,",
+    "options": [
+      "Melakukan white box test dan bedah source code",
+      "Melakukan disassembling",
+      "Menguji aplikasi dengan perangkat penguji misalkan selenium. ← Jawaban",
+      "Melakukan source code review and correction",
+      "Melakukan reverse engineering"
+    ],
+    "correctAnswer": "Menguji aplikasi dengan perangkat penguji misalkan selenium. ← Jawaban"
+  },
+  {
+    "id": 58,
+    "question": "File format teks yang saat ini biasa digunakan untuk",
+    "options": [
+      "JSON",
+      "GET",
+      "PHP",
+      "HTML",
+      "HTTP"
+    ],
+    "correctAnswer": "JSON"
+  },
+  {
+    "id": 59,
+    "question": "Fitur-ﬁtur yang didukung oleh android, kecuali...",
+    "options": [
+      "Storage",
+      "Multi purpose",
+      "Connectivity",
+      "Multi touch",
+      "Media Libraries"
+    ],
+    "correctAnswer": "Multi purpose"
+  },
+  {
+    "id": 60,
+    "question": "Interpreter yang mengeksekusi ﬁle.dex untuk melakukan",
+    "options": [
+      "Core Library",
+      "Resource Manager",
+      "Dalvik Virtual Machine",
+      "Power Management",
+      "Activity Manager"
+    ],
+    "correctAnswer": "Dalvik Virtual Machine"
+  },
+  {
+    "id": 61,
+    "question": "Jenis frekuensi yang digunakan pada bluetooth adalah....",
+    "options": [
+      "HSDPA",
+      "HSUPA",
+      "CDMA",
+      "FHSS",
+      "WCDMA"
+    ],
+    "correctAnswer": "FHSS"
+  },
+  {
+    "id": 62,
+    "question": "Kecepatan maksimum pada wiﬁ berstandar 802.11b",
+    "options": [
+      "5 Mbps",
+      "65 Mbps",
+      "54 Mbps",
+      "11 MBps",
+      "100 Mbps"
+    ],
+    "correctAnswer": "11 MBps"
+  },
+  {
+    "id": 63,
+    "question": "Kecepatan maksimum pada wiﬁ berstandar 802.11n",
+    "options": [
+      "600 Mbps",
+      "700 MBps",
+      "500 Mbps",
+      "100 Mbps",
+      "10 Mbps"
+    ],
+    "correctAnswer": "600 Mbps"
+  },
+  {
+    "id": 64,
+    "question": "Kemampuan menyediakan layanan komputasi setiap saat,",
+    "options": [
+      "Distributed Computing",
+      "Cloud Computing",
+      "Parallel Computing",
+      "Ubiquitous and pervasive computing",
+      "Autonomous Computing"
+    ],
+    "correctAnswer": "Ubiquitous and pervasive computing"
+  },
+  {
+    "id": 65,
+    "question": "Kernel yang berjalan di Sistem operasi iOS adalah....",
+    "options": [
+      "Monolithic Kernel",
+      "Microkernel",
+      "Exokernel",
+      "Hybrid Kernel",
+      "Doc Kernel"
+    ],
+    "correctAnswer": "Microkernel"
+  },
+  {
+    "id": 66,
+    "question": "Ketika seorang user mengalami kerugian akibat dari",
+    "options": [
+      "Malware",
+      "Network based attack",
+      "Data integrity threats",
+      "Social engineering",
+      "Resource abuse"
+    ],
+    "correctAnswer": "Social engineering"
+  },
+  {
+    "id": 67,
+    "question": "Ketika terjadi penurunan kualitas telekomunikasi pada",
+    "options": [
+      "Roundtip",
+      "Roaming",
+      "Handshake",
+      "Handover",
+      "Rollback"
+    ],
+    "correctAnswer": "Handover"
+  },
+  {
+    "id": 68,
+    "question": "Kode status 404 ketika proses respon dari REST Server ke",
+    "options": [
+      "HTTP_METHOD_NOT_ALLOWED",
+      "HTTP_BAD_REQUEST",
+      "HTTP_NOT_FOUND",
+      "HTTP_BAD_GATEWAY",
+      "HTTP_NOT_REQUEST"
+    ],
+    "correctAnswer": "HTTP_NOT_FOUND"
+  },
+  {
+    "id": 69,
+    "question": "Komponen dibawah ini terdapat pada teknologi",
+    "options": [
+      "XML messaging (SOAP)",
+      "UDP (Data protocol)",
+      "Service publication and discovery (UDDI)",
+      "Service description (WSDL)",
+      "Internet protocol (HTTP, TCP IP)"
+    ],
+    "correctAnswer": "UDP (Data protocol)"
+  },
+  {
+    "id": 70,
+    "question": "Komponen yang berfungsi untuk mengatur data aplikasi",
+    "options": [
+      "Intents",
+      "activity",
+      "content providers",
+      "services",
+      "View"
+    ],
+    "correctAnswer": "content providers"
+  },
+  {
+    "id": 71,
+    "question": "Layanan ip nirkabel yang menggunakan informasi",
+    "options": [
+      "Internet Maping integration",
+      "Enterprise Mobile Service",
+      "Mobile Enterprise Solution",
+      "Location Based Service",
+      "Mobile Technologi communication"
+    ],
+    "correctAnswer": "Location Based Service"
+  },
+  {
+    "id": 72,
+    "question": "Location Based Services atau yang dikenal dengan LBS",
+    "options": [
+      "Aplikasi telematika yang mampu melakukan komunikasi suara dan text",
+      "Aplikasi telematika yang mampu mengidentiﬁkasi perangkat bergerak",
+      "Aplikasi telematika yang mampu menemukan arah pengguna mobile",
+      "Aplikasi telematika yang mampu menentukan / menemukan lokasi perangkat",
+      "Aplikasi telematika yang mampu melacak keberadaan seseorang"
+    ],
+    "correctAnswer": "Aplikasi telematika yang mampu menentukan / menemukan lokasi perangkat"
+  },
+  {
+    "id": 73,
+    "question": "Manakah bagian OSI layer dibawah ini yang berkaitan",
+    "options": [
+      "Session Layer",
+      "Transport Layer",
+      "Application Layer",
+      "Ethernet layer",
+      "Presentation Layer"
+    ],
+    "correctAnswer": "Ethernet layer"
+  },
+  {
+    "id": 74,
+    "question": "Manakah dibawah ini yang merupakan pernyataan yang",
+    "options": [
+      "API adalah sekumpulan fungsi, perintah ataupun protokol untuk berinteraksi dengan",
+      "API menjembatani interaksi aplikasi dengan layer dasar sesuai protokol dan spesiﬁkasi",
+      "Emulator pada ADS adalah implementasi API dalam ranah POSIX",
+      "Penggunaan API langsung dapat dilakukan tanpa autentikasi hak akses ←",
+      "Pertukaran data dan bussines logic antara consumer program dengan provider"
+    ],
+    "correctAnswer": "Penggunaan API langsung dapat dilakukan tanpa autentikasi hak akses ←"
+  },
+  {
+    "id": 75,
+    "question": "Memberikan Slot waktu frekuensi untuk tiap panggilan",
+    "options": [
+      "CDMA",
+      "HSDPA",
+      "MIMO",
+      "FDMA",
+      "TDMA"
+    ],
+    "correctAnswer": "TDMA"
+  },
+  {
+    "id": 76,
+    "question": "Mendeklarasikan tipe MIME, URL, authority penggunaan",
+    "options": [
+      "<action>",
+      "<data>",
+      "<meta-data>",
+      "<service>",
+      "<input>"
+    ],
+    "correctAnswer": "<data>"
+  },
+  {
+    "id": 77,
+    "question": "Menempatkan setiap panggilan pada frekuensi yang",
+    "options": [
+      "TDMA",
+      "HSDPA",
+      "FDMA",
+      "MIMO",
+      "CDMA"
+    ],
+    "correctAnswer": "FDMA"
+  },
+  {
+    "id": 78,
+    "question": "Mesin database relasional yang kuat dan ringan yang",
+    "options": [
+      "MySql",
+      "SQLite",
+      "PhpMyadmin",
+      "SGL",
+      "MsSQL"
+    ],
+    "correctAnswer": "SQLite"
+  },
+  {
+    "id": 79,
+    "question": "Mobile technology dapat diimplementasikan secara AOC",
+    "options": [
+      "Klien SOC dapat bekerja secara efektif dalam mode terputus dan memanfaatkan",
+      "Teknologi klien AOC biasanya memerlukan perangkat Pocket PC atau WinCE",
+      "Klien SOC memiliki kemampuan untuk menyimpan data dalam jumlah besar di",
+      "Pembaruan data SOC ketika benar-benar terjadi bisa menjadi berlangsung cepat dari",
+      "Pembaruan data pada SOC dapat terjadi ketika koneksi sinkronisasi nirkabel, dialup"
+    ],
+    "correctAnswer": "Teknologi klien AOC biasanya memerlukan perangkat Pocket PC atau WinCE"
+  },
+  {
+    "id": 80,
+    "question": "Pada bluetooth yang bertugas melakukan aktiﬁtas",
+    "options": [
+      "Link Manager",
+      "Processor Core",
+      "Baseband Controler",
+      "SRAM",
+      "UART"
+    ],
+    "correctAnswer": "Link Manager"
+  },
+  {
+    "id": 81,
+    "question": "Pada konsep seluler analog setiap cell terdiri dari",
+    "options": [
+      "7 Cell berbentuk linkaran penuh",
+      "7 Cell berbentuk hexagonal",
+      "5 Cell berbentuk diagonal",
+      "6 Cell berbentuk 4 persegi",
+      "Multi cell"
+    ],
+    "correctAnswer": "7 Cell berbentuk hexagonal"
+  },
+  {
+    "id": 82,
+    "question": "Penerapan Aplikasi mobile pada bidang Business to",
+    "options": [
+      "Mobile Commerce",
+      "Mobile Sales Improvement",
+      "Mobile Suply Chaim",
+      "Mobile Payment Gateway",
+      "Mobile Sales Marketing"
+    ],
+    "correctAnswer": "Mobile Commerce"
+  },
+  {
+    "id": 83,
+    "question": "Salah satu keterbatasan piranti mobile adalah latency yg",
+    "options": [
+      "Kurangi kebutuhan pengiriman data besar",
+      "Optimalkan ukuran paket aplikasi",
+      "jangan melakukan komputasi intensif pada piranti",
+      "Kurangi round trip pada jaringan",
+      "rancang aplikasi yang ﬂeksibel"
+    ],
+    "correctAnswer": "Kurangi round trip pada jaringan"
+  },
+  {
+    "id": 84,
+    "question": "Salah satu keunggulan dari Code Division Multiple Access",
+    "options": [
+      "cell site yang terbentuk menjadi lebih banyak",
+      "ﬂeksibilitas perangkat handset yang digunakan",
+      "penekanan cost untuk network insfratruktur",
+      "interference dan background noise lebih rendah",
+      "teknologi lebih unggul dibanding teknologi komunikasi lain"
+    ],
+    "correctAnswer": "interference dan background noise lebih rendah"
+  },
+  {
+    "id": 85,
+    "question": "Salah satu metode Menemukan lokasi / posisi berdasarkan",
+    "options": [
+      "Enhanced Observed Time",
+      "Time Diﬀerence of Arrival",
+      "Enhanced Observed of Arrival",
+      "Cell of Origin",
+      "Anggle Of Arrival"
+    ],
+    "correctAnswer": "Anggle Of Arrival"
+  },
+  {
+    "id": 86,
+    "question": "Sebuah aktiﬁtas melalui protokol HTTP dimana server",
+    "options": [
+      "HTTP Client",
+      "HTTP Servlets",
+      "HTTP Request",
+      "HTTP Response",
+      "HTTP Post"
+    ],
+    "correctAnswer": "HTTP Response"
+  },
+  {
+    "id": 87,
+    "question": "Sebuah kelas dalam programming Android yang berfungsi",
+    "options": [
+      "Intents",
+      "activity",
+      "content providers",
+      "services",
+      "View"
+    ],
+    "correctAnswer": "Intents"
+  },
+  {
+    "id": 88,
+    "question": "Sebuah spesiﬁkasi XML yang menggambarkan bagaimana",
+    "options": [
+      "XPointer",
+      "XML",
+      "WSDL",
+      "UDDI",
+      "XHTML"
+    ],
+    "correctAnswer": "UDDI"
+  },
+  {
+    "id": 89,
+    "question": "Sebuah spesiﬁkasi yang berbasis XML yang digunakan",
+    "options": [
+      "XML",
+      "WSDL",
+      "SOAP",
+      "XSLT",
+      "UDDI"
+    ],
+    "correctAnswer": "WSDL"
+  },
+  {
+    "id": 90,
+    "question": "Sebutkan komponen utama layanan Webservice?",
+    "options": [
+      "SOAP, XML, WSDL, HTTP,UDDI",
+      "XML, XPath, XPointer",
+      "WSDL, XSLT, SOAP",
+      "UDDI, SOAP, XPath",
+      "SOAP, XHTML, XSLT"
+    ],
+    "correctAnswer": "SOAP, XML, WSDL, HTTP,UDDI"
+  },
+  {
+    "id": 91,
+    "question": "Secara umum, web service memiliki 3 (tiga) operasi yang",
+    "options": [
+      "Login, Find, Bind",
+      "Publish/Unpublish, Find, line",
+      "Publish/Unpublish, Search, Bind",
+      "Publish/Unpublish, Find, Bind",
+      "Publish/Unpublish, Find, Search"
+    ],
+    "correctAnswer": "Publish/Unpublish, Find, Bind"
+  },
+  {
+    "id": 92,
+    "question": "Serangan yang dapat membebani server, memperkecil",
+    "options": [
+      "Malware",
+      "network and web based attack",
+      "Social engineering",
+      "Resource abuse",
+      "Data integrity threats"
+    ],
+    "correctAnswer": "Resource abuse"
+  },
+  {
+    "id": 93,
+    "question": "Spesiﬁkasi yang mendeﬁnisikan tata bahasa XML untuk",
+    "options": [
+      "XML",
+      "WSDL",
+      "SOAP",
+      "XPath",
+      "UDDI"
+    ],
+    "correctAnswer": "SOAP"
+  },
+  {
+    "id": 94,
+    "question": "Standar Wiﬁ 802.11 berikut saling kompatibel, kecuali...",
+    "options": [
+      "802.11b",
+      "802.11a",
+      "802.11ac",
+      "802.11g",
+      "802.11n"
+    ],
+    "correctAnswer": "802.11a"
+  },
+  {
+    "id": 95,
+    "question": "Standar Wiﬁ 802.11 yang biasa digunakan untuk hotspot,",
+    "options": [
+      "802.11b",
+      "802.11a",
+      "802.11ac",
+      "802.11g",
+      "802.11n"
+    ],
+    "correctAnswer": "802.11a"
+  },
+  {
+    "id": 96,
+    "question": "Standar Wiﬁ 802.11 yang memiliki transfer rate terbesar",
+    "options": [
+      "802.11b",
+      "802.11a",
+      "802.11ac",
+      "802.11g",
+      "802.11n"
+    ],
+    "correctAnswer": "802.11ac"
+  },
+  {
+    "id": 97,
+    "question": "Standard komunikasi mobile dari European",
+    "options": [
+      "CDMA",
+      "GSM",
+      "WCDMA",
+      "EDGE",
+      "FDMA"
+    ],
+    "correctAnswer": "GSM"
+  },
+  {
+    "id": 98,
+    "question": "Teknologi dibawah ini menggunakan sinyal radio digital,",
+    "options": [
+      "WIMAX",
+      "TDMA",
+      "WCDMA",
+      "FDMA",
+      "GPRS"
+    ],
+    "correctAnswer": "FDMA"
+  },
+  {
+    "id": 99,
+    "question": "Transmisi pada Global System for Mobile Communication",
+    "options": [
+      "374 kanal full duplex 25 MHz",
+      "365 kanal full duplex 25 MHz",
+      "374 kanal full duplex 10 MHz",
+      "124 kanal full duplex 25 MHz",
+      "124 kanal full duplex 20 MHz"
+    ],
+    "correctAnswer": "374 kanal full duplex 25 MHz"
+  },
+  {
+    "id": 100,
+    "question": "Wiﬁ sangat memerlukan pengamanan jaringan, manakah",
+    "options": [
+      "WAP",
+      "UDP",
+      "FTP",
+      "WPA",
+      "MAC Filtering"
+    ],
+    "correctAnswer": "WPA"
+  }
+]

@@ -24,6 +24,7 @@ export default function Home() {
   const [isFinished, setIsFinished] = useState(false);
   const [isRandomMode, setIsRandomMode] = useState(false);
   const [isRandomOptionsMode, setIsRandomOptionsMode] = useState(false);
+  const [essayInput, setEssayInput] = useState("");
   
   const { theme, setTheme } = useTheme();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -56,6 +57,11 @@ export default function Home() {
       localStorage.removeItem("ngasal_isFinished");
     }
   }, [questions, answers, currentIndex, isFinished]);
+
+  useEffect(() => {
+    setEssayInput(answers[currentIndex] || "");
+  }, [currentIndex, answers]);
+
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -74,7 +80,7 @@ export default function Home() {
           if (isRandomOptionsMode) {
             finalQuestions = finalQuestions.map((q) => ({
               ...q,
-              options: [...q.options].sort(() => Math.random() - 0.5),
+              options: q.options ? [...q.options].sort(() => Math.random() - 0.5) : [],
             }));
           }
 
@@ -103,6 +109,22 @@ export default function Home() {
     });
   };
 
+  const handleEssaySubmit = () => {
+    if (!essayInput.trim()) return;
+    setAnswers((prev) => ({
+      ...prev,
+      [currentIndex]: essayInput.trim(),
+    }));
+  };
+
+  const handleEssayReset = () => {
+    setAnswers((prev) => {
+      const newAnswers = { ...prev };
+      delete newAnswers[currentIndex];
+      return newAnswers;
+    });
+  };
+
   const handleNext = () => {
     if (questions && currentIndex < questions.length - 1) {
       setCurrentIndex((prev) => prev + 1);
@@ -124,7 +146,7 @@ export default function Home() {
       if (isRandomOptionsMode) {
         reshuffled = reshuffled.map((q) => ({
           ...q,
-          options: [...q.options].sort(() => Math.random() - 0.5),
+          options: q.options ? [...q.options].sort(() => Math.random() - 0.5) : [],
         }));
       }
       setQuestions(reshuffled);
@@ -162,7 +184,19 @@ export default function Home() {
     if (!questions) return 0;
     let total = 0;
     questions.forEach((q, idx) => {
-      if (answers[idx] === q.correctAnswer) total++;
+      const userAnswer = answers[idx];
+      if (userAnswer === undefined) return;
+      
+      const isEssay = !q.options || q.options.length === 0;
+      if (isEssay) {
+        if (userAnswer.trim().toLowerCase() === q.correctAnswer.trim().toLowerCase()) {
+          total++;
+        }
+      } else {
+        if (userAnswer === q.correctAnswer) {
+          total++;
+        }
+      }
     });
     return total;
   }, [answers, questions]);
@@ -281,27 +315,85 @@ export default function Home() {
         <CardHeader>
           <CardTitle className="text-lg md:text-xl leading-relaxed">{currentQ.question}</CardTitle>
         </CardHeader>
-        <CardContent className="flex flex-col gap-2">
-          {currentQ.options.map((option, index) => {
-            const isSelected = answers[currentIndex] === option;
-            const isCorrect = option === currentQ.correctAnswer;
-            
-            let customClass = "justify-start text-left text-sm md:text-base p-4 min-h-[1.5rem] h-auto whitespace-normal transition-colors";
-            
-            if (hasAnsweredCurrent) {
-              if (isCorrect) {
-                customClass += " bg-emerald-500 hover:bg-emerald-600 text-white border-emerald-500 dark:bg-emerald-600 dark:hover:bg-emerald-700";
-              } else if (isSelected) {
-                customClass += " bg-red-500 hover:bg-red-600 text-white border-red-500 dark:bg-red-600 dark:hover:bg-red-700";
-              }
-            }
+        <CardContent className="flex flex-col gap-4">
+          {!currentQ.options || currentQ.options.length === 0 ? (
+            <div className="flex flex-col gap-3">
+              <input
+                type="text"
+                value={essayInput}
+                onChange={(e) => setEssayInput(e.target.value)}
+                disabled={hasAnsweredCurrent}
+                placeholder="Ketik jawaban singkat kamu di sini..."
+                className="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:opacity-80 transition-all text-sm md:text-base"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !hasAnsweredCurrent) {
+                    handleEssaySubmit();
+                  }
+                }}
+              />
+              
+              {!hasAnsweredCurrent ? (
+                <Button 
+                  onClick={handleEssaySubmit} 
+                  disabled={!essayInput.trim()} 
+                  className="w-full md:w-auto self-end font-semibold"
+                >
+                  Kunci Jawaban
+                </Button>
+              ) : (
+                <div className="flex flex-col gap-3">
+                  {essayInput.trim().toLowerCase() === currentQ.correctAnswer.trim().toLowerCase() ? (
+                    <div className="p-4 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400 flex flex-col gap-1 text-sm md:text-base">
+                      <span className="font-bold flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><polyline points="20 6 9 17 4 12"/></svg>
+                        Jawaban Kamu Benar!
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="p-4 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive flex flex-col gap-2 text-sm md:text-base">
+                      <span className="font-bold flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="shrink-0"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        Jawaban Kamu Kurang Tepat.
+                      </span>
+                      <p className="text-muted-foreground text-xs md:text-sm">
+                        Jawaban yang benar: <strong className="text-foreground font-semibold">{currentQ.correctAnswer}</strong>
+                      </p>
+                    </div>
+                  )}
+                  <Button 
+                    variant="outline" 
+                    onClick={handleEssayReset} 
+                    className="w-full md:w-auto self-end"
+                  >
+                    Ubah Jawaban
+                  </Button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <div className="flex flex-col gap-2">
+              {currentQ.options.map((option, index) => {
+                const isSelected = answers[currentIndex] === option;
+                const isCorrect = option === currentQ.correctAnswer;
+                
+                let customClass = "justify-start text-left text-sm md:text-base p-4 min-h-[1.5rem] h-auto whitespace-normal transition-colors w-full";
+                
+                if (hasAnsweredCurrent) {
+                  if (isCorrect) {
+                    customClass += " bg-emerald-500 hover:bg-emerald-600 text-white border-emerald-500 dark:bg-emerald-600 dark:hover:bg-emerald-700";
+                  } else if (isSelected) {
+                    customClass += " bg-red-500 hover:bg-red-600 text-white border-red-500 dark:bg-red-600 dark:hover:bg-red-700";
+                  }
+                }
 
-            return (
-              <Button key={index} variant="outline" className={customClass} onClick={() => handleAnswerSelect(option)}>
-                {option}
-              </Button>
-            );
-          })}
+                return (
+                  <Button key={index} variant="outline" className={customClass} onClick={() => handleAnswerSelect(option)}>
+                    {option}
+                  </Button>
+                );
+              })}
+            </div>
+          )}
         </CardContent>
         
         <CardFooter className="flex justify-between pt-4 border-t mt-2">
