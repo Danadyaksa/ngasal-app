@@ -17,6 +17,25 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 
+const cleanQuestionText = (text: string): string => {
+  if (!text) return "";
+  const patterns = [
+    "📝 Soal Isian Singkat",
+    "✅ Jawaban:",
+    "📝 Soal Pilihan Ganda",
+    "📝 Soal Isian",
+    "📝 Soal Essay"
+  ];
+  let cleaned = text;
+  for (const pattern of patterns) {
+    const idx = cleaned.indexOf(pattern);
+    if (idx !== -1) {
+      cleaned = cleaned.substring(0, idx);
+    }
+  }
+  return cleaned.trim();
+};
+
 export default function Home() {
   const [questions, setQuestions] = useState<Question[] | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -313,7 +332,9 @@ export default function Home() {
 
       <Card className="w-full max-w-3xl shadow-lg mb-4">
         <CardHeader>
-          <CardTitle className="text-lg md:text-xl leading-relaxed">{currentQ.question}</CardTitle>
+          <CardTitle className="text-lg md:text-xl leading-relaxed">
+            {cleanQuestionText(currentQ.question)}
+          </CardTitle>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
           {!currentQ.options || currentQ.options.length === 0 ? (
