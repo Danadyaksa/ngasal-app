@@ -23,6 +23,7 @@ export default function Home() {
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [isFinished, setIsFinished] = useState(false);
   const [isRandomMode, setIsRandomMode] = useState(false);
+  const [isRandomOptionsMode, setIsRandomOptionsMode] = useState(false);
   
   const { theme, setTheme } = useTheme();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -70,6 +71,12 @@ export default function Home() {
           if (isRandomMode) {
             finalQuestions.sort(() => Math.random() - 0.5);
           }
+          if (isRandomOptionsMode) {
+            finalQuestions = finalQuestions.map((q) => ({
+              ...q,
+              options: [...q.options].sort(() => Math.random() - 0.5),
+            }));
+          }
 
           setQuestions(finalQuestions);
           setCurrentIndex(0);
@@ -109,8 +116,17 @@ export default function Home() {
   };
 
   const handleRetake = () => {
-    if (questions && isRandomMode) {
-      const reshuffled = [...questions].sort(() => Math.random() - 0.5);
+    if (questions) {
+      let reshuffled = [...questions];
+      if (isRandomMode) {
+        reshuffled.sort(() => Math.random() - 0.5);
+      }
+      if (isRandomOptionsMode) {
+        reshuffled = reshuffled.map((q) => ({
+          ...q,
+          options: [...q.options].sort(() => Math.random() - 0.5),
+        }));
+      }
       setQuestions(reshuffled);
     }
     setCurrentIndex(0);
@@ -193,6 +209,13 @@ export default function Home() {
                 <div className="grid grid-cols-2 gap-4 w-full">
                   <Button variant={!isRandomMode ? "default" : "outline"} onClick={() => setIsRandomMode(false)} className="w-full">Urut</Button>
                   <Button variant={isRandomMode ? "default" : "outline"} onClick={() => setIsRandomMode(true)} className="w-full">Acak</Button>
+                </div>
+              </div>
+              <div className="flex flex-col gap-3 w-full">
+                <span className="text-sm font-medium text-center text-muted-foreground">Acak Pilihan Jawaban:</span>
+                <div className="grid grid-cols-2 gap-4 w-full">
+                  <Button variant={!isRandomOptionsMode ? "default" : "outline"} onClick={() => setIsRandomOptionsMode(false)} className="w-full">Tidak</Button>
+                  <Button variant={isRandomOptionsMode ? "default" : "outline"} onClick={() => setIsRandomOptionsMode(true)} className="w-full">Ya</Button>
                 </div>
               </div>
               <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-40 border-2 border-primary/25 border-dashed rounded-lg cursor-pointer bg-muted/20 hover:bg-primary/5 transition-colors">
